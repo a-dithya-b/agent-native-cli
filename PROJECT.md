@@ -48,41 +48,11 @@ The intended distribution model is **Skill first**, not product first: people sh
 5. Ran the same task set with and without that command surface.
 6. Captured both Claude Code sessions as JSONL and analyzed them independently.
 
-## Experiment 001 — preliminary result
+## Current evidence
 
-Same model/configuration and same four requested tasks were used for baseline and agent-native sessions, followed by two repeated executions.
+Experiment 001 provides preliminary evidence that an agent-native command surface can reduce command volume and tool-output volume. Detailed results are recorded separately in `EXPERIMENTS.md`.
 
-Observed reductions in the analyzed transcripts:
-
-| Metric | Baseline | Agent-native | Reduction |
-|---|---:|---:|---:|
-| Bash calls | 14 | 9 | 35.7% |
-| Commands generated | 117 | 43 | 63.2% |
-| Command characters | 3,428 | 924 | 73.0% |
-| Tool-output bytes | 30,955 | 9,419 | 69.6% |
-| Estimated tool-output tokens | 7,739 | 2,355 | 69.6% |
-| Agent output tokens | 6,410 | 2,961 | 53.8% |
-
-For repeated work (rounds 2–3 combined), the analyzed transcript showed:
-
-| Metric | Baseline | Agent-native | Reduction |
-|---|---:|---:|---:|
-| Commands generated | 65 | 20 | 69.2% |
-| Command characters | 1,839 | 388 | 79.0% |
-| Tool-output bytes | 9,491 | 974 | 89.7% |
-| Estimated tool-output tokens | 2,374 | 244 | 89.7% |
-| Agent output tokens | 1,665 | 1,003 | 39.8% |
-
-These are **preliminary observations from one repository and one experiment**, not general performance claims. Tool-output token counts were estimated at 1 token per 4 UTF-8 bytes. Exact token accounting and causal attribution still need further validation.
-
-## What is not proven
-
-- Generalization across repositories and technology stacks.
-- Generalization across models and coding agents.
-- Whether token savings translate consistently into lower cost.
-- Whether reliability or task success improves.
-- Which command/interface patterns contribute most to the effect.
-- Whether there is a meaningful standalone product opportunity.
+This is **not yet evidence of general performance**: the experiment used one repository and one model/configuration. See `HYPOTHESES.md` for what remains unproven.
 
 ## Current hypothesis
 
