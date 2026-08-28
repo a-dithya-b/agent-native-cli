@@ -97,6 +97,7 @@ Tool-output tokens were estimated at 1 token per 4 UTF-8 bytes.
 - The agent-native agent used fewer mechanical Bash calls.
 - The interface changed the agent's task decomposition from reconstructing low-level procedures toward invoking semantic capabilities.
 - Round 3 agent output tokens were essentially unchanged despite much smaller command and tool-output volume, suggesting that the savings are not simply caused by making the agent's final response shorter.
+- The resulting command surface was also useful to the developer: the higher-level commands made the same repetitive repository checks easier to invoke without remembering the underlying command sequence. This is an observation from the workflow, not a systematically measured developer-productivity result.
 
 ### Limitations
 
@@ -106,6 +107,7 @@ Tool-output tokens were estimated at 1 token per 4 UTF-8 bytes.
 - Tool-output token counts are estimates
 - Cache behavior complicates direct cost interpretation
 - Different execution paths can introduce confounding factors
+- The developer usability observation has not been measured systematically
 - Results do not establish generality or causality
 
 ### Next

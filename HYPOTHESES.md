@@ -57,3 +57,11 @@ There is sufficient recurring value in agent-native interface design to justify 
 **Status:** Unknown
 
 Do not optimize for a product until the underlying pattern is validated.
+
+## H8 — Agent-discovered abstractions
+
+Agents can identify repetitive deterministic workflows and create abstractions that improve the interface for both agents and developers.
+
+**Status:** Unknown
+
+Experiment 001 suggested that the resulting command surface was also useful to the developer, but this benefit has not been measured systematically.
