@@ -32,7 +32,7 @@ A good agent-facing command surface can:
 - make common repository workflows easier to discover and reuse
 - preserve normal developer workflows
 
-It is especially useful for things like tests, builds, linting, migrations, releases, checks, audits, and other multi-step repository procedures.
+It is especially useful for tests, builds, linting, migrations, releases, checks, audits, and other multi-step repository procedures.
 
 ## Try the Skill
 
@@ -76,7 +76,7 @@ These are small, practical experiments—not a benchmark or a claim that the Ski
 
 The useful result so far is simpler: **when work is deterministic and repeated, giving an agent a better interface to that work can reduce the effort needed to perform it.**
 
-[Read the experiments](experiments/001/results.md)
+[Read the experiments](experiments/README.md)
 
 ## What's in the repository?
 
