@@ -10,7 +10,13 @@ inspect → remember commands → run several steps → parse noisy output → r
 
 **Agent-Native CLI** is a portable Skill that teaches coding agents to turn those procedures into small, deterministic, agent-friendly commands.
 
-The idea is simple:
+> **Let the agent decide what to do. Let deterministic tooling handle how to do it.**
+
+## Why this exists
+
+A repository often already knows how to perform a task. The problem is that an agent may still have to rediscover the sequence of commands, invoke each step, and process routine output every time.
+
+The idea is to create a better interface at the agent/tool boundary:
 
 ```text
 Instead of:
@@ -20,21 +26,9 @@ Prefer:
 agent → one meaningful command → useful result
 ```
 
-The shell, Make, npm scripts, Python scripts, and small CLIs can still do the work. The Skill is about designing the interface the agent uses to reach them.
+This is not about replacing the shell or standardizing on Make. Make, npm scripts, Python scripts, shell scripts, and small CLIs can all remain the implementation mechanisms. The Skill is about designing the interface the agent uses to reach them.
 
-## Why use it?
-
-A good agent-facing command surface can:
-
-- reduce repeated command construction
-- keep deterministic work out of the model
-- return only information the agent needs to make its next decision
-- make common repository workflows easier to discover and reuse
-- preserve normal developer workflows
-
-It is especially useful for tests, builds, linting, migrations, releases, checks, audits, and other multi-step repository procedures.
-
-## Try the Skill
+## Try it
 
 The Skill is self-contained and does not require a framework or runtime.
 
@@ -43,6 +37,22 @@ The Skill is self-contained and does not require a framework or runtime.
 Then ask the agent to review a repository and identify repetitive workflows that could benefit from a better command interface.
 
 The Skill works with existing repository mechanisms. It does not require you to adopt Make, replace your CLI, or introduce new infrastructure.
+
+## Help test the idea
+
+This project is intentionally an open experiment. **The most useful contribution right now is running the Skill on a repository we haven't tested and reporting what happened.**
+
+Try it on a real codebase, compare the workflow with and without the Skill, and [submit an experiment report](CONTRIBUTING.md).
+
+Both positive and negative results are useful. In particular, we're interested in cases where:
+
+- the Skill clearly reduces procedural work
+- the effect is small or disappears
+- the agent creates its own abstraction without the Skill
+- a command surface makes things worse
+- a workflow is difficult to make agent-friendly
+
+The goal is to learn **when and why** agent-native interfaces help, not to collect only favorable results.
 
 ## What it teaches
 
@@ -54,29 +64,35 @@ The Skill focuses on two sides of the agent/tool boundary:
 
 The agent should still make the decisions. The repository should handle the known procedure.
 
-## Does it actually help?
+## What we've seen so far
 
-We tried the approach on two different repositories: a Python project and a TypeScript backend.
+We've run the approach on two different repositories: a Python project and a TypeScript backend.
 
-In the initial task execution, the agent-native interface produced fewer shell interactions and substantially less command construction in both experiments.
+In the initial task execution, the agent-native interface reduced procedural work in both experiments, although the size of the effect varied.
 
-In the first experiment, for example:
+### Experiment 001
 
 | | Without the Skill | With the Skill |
 |---|---:|---:|
 | Bash calls | 10 | 7 |
 | Commands generated | 52 | 23 |
-| Command characters | 1,589 | 536 |
 | Tool output | 21.5 KB | 8.4 KB |
 | Agent output tokens | 4,745 | 1,958 |
 
-In the second experiment, the initial run showed a smaller but still clear reduction in procedural work: **28 → 21 Bash calls**, **119 → 83 generated commands**, and **5,107 → 2,104 command characters**.
+### Experiment 002
+
+| | Without the Skill | With the Skill |
+|---|---:|---:|
+| Bash calls | 28 | 21 |
+| Commands generated | 119 | 83 |
+| Command characters | 5,107 | 2,104 |
+| Agent output tokens | 10,774 | 6,918 |
+
+The repeat phase of Experiment 002 was not a clean comparison because the baseline agent created its own reusable `qa.sh` wrapper during the first run. That is exactly the kind of behavior this project needs to account for: agents can create abstractions themselves, and not every repository benefits equally from a pre-designed interface.
 
 These are small, practical experiments—not a benchmark or a claim that the Skill will produce the same improvement everywhere. Repository tooling, workflows, and agent behavior all matter.
 
-The useful result so far is simpler: **when work is deterministic and repeated, giving an agent a better interface to that work can reduce the effort needed to perform it.**
-
-[Read the experiments](experiments/README.md)
+**[Read the experiments](experiments/README.md)**
 
 ## What's in the repository?
 
@@ -92,11 +108,11 @@ skills/agent-native-cli/
 
 The references explain the ideas behind the Skill, but you can start with `SKILL.md` alone.
 
-## The principle
+## What's next?
 
-> **Let the agent decide what to do. Let deterministic tooling handle how to do it.**
+The current goal is validation, not productization. We want to understand which interface patterns consistently help across repositories, workflows, coding agents, and models.
 
-If a repository has a procedure an agent keeps reconstructing, make that procedure a capability the agent can discover and reuse.
+Community experiments can help answer that faster than building more infrastructure prematurely.
 
 ## License
 
