@@ -4,57 +4,38 @@
 
 **Status: Done**
 
-- Define Agent-Native CLI concept.
-- Create portable `SKILL.md`.
+- Define the Agent-Native CLI concept.
+- Create the portable Skill.
 - Add supporting principles.
-- Use the Skill on a real repository.
+- Use the Skill on real repositories.
 
-## Phase 2 — Controlled validation
+## Phase 2 — Initial validation
+
+**Status: Done**
+
+- Test the approach on a Python repository.
+- Test the approach on a TypeScript backend.
+- Compare baseline and agent-native workflows.
+- Capture and analyze agent transcripts independently.
+- Document the results and limitations.
+
+The experiments provide early evidence that giving agents a deliberate interface to deterministic workflows can reduce procedural work. They are not intended as a benchmark or universal performance claim.
+
+## Phase 3 — Share and learn
 
 **Status: In progress**
 
-### Experiment 001
+- Make the Skill easy to discover and use.
+- Keep the Skill portable and lightweight.
+- Learn from how it behaves across real repositories and agents.
+- Improve the guidance when recurring patterns or failure modes emerge.
 
-- [x] Baseline session
-- [x] Agent-native session
-- [x] Repeat task execution
-- [x] Capture JSONL transcripts
-- [x] Independently analyze transcripts
-- [x] Separate initial discovery from repeated work
+## Phase 4 — Broader exploration
 
-### Experiment 002
+**Status: Later, if useful**
 
-- [ ] Select an independent repository and stack.
-- [ ] Define a fixed task set.
-- [ ] Run baseline session.
-- [ ] Have the Skill create the agent-native command surface.
-- [ ] Run agent-native session.
-- [ ] Repeat the task set.
-- [ ] Capture and analyze transcripts.
-- [ ] Compare results with Experiment 001.
+- Explore additional workflow and repository patterns.
+- Test additional coding agents or models when there is a practical reason.
+- Document useful examples and lessons from real usage.
 
-## Phase 3 — Generalize
-
-**Status: Not started**
-
-- Identify which interface patterns consistently produce improvements.
-- Test additional workflow types.
-- Test additional coding agents/models where practical.
-- Establish a reproducible benchmark methodology.
-
-## Phase 4 — Evaluate tooling
-
-**Status: Not started**
-
-Possible directions, contingent on evidence:
-
-- agent-native CLI conventions/specification
-- repository evaluator/linter
-- automated interface recommendations
-- additional Skills
-
-## Phase 5 — Product decision
-
-**Status: Not started**
-
-Decide whether the validated problem warrants a standalone product.
+There is no goal of proving a universal performance improvement. The priority is to make the Skill useful.

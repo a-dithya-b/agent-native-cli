@@ -2,66 +2,50 @@
 
 These are working hypotheses, not established facts.
 
-## H1 — Procedural reasoning
+## H1 — Less procedural work
 
-An agent-native command surface reduces the amount of procedural reasoning required for repetitive engineering workflows.
+An agent-native command surface can reduce the amount of procedural reasoning required for repetitive engineering workflows.
 
 **Status:** Preliminary support
 
-Experiment 001 showed fewer generated commands and fewer mechanical Bash calls, but this needs replication.
+Both initial experiments showed fewer commands and shell interactions in the agent-native condition. The second experiment also showed fewer debugging interactions.
 
 ## H2 — Action compression
 
-Higher-level deterministic commands reduce model-generated command volume and tool interactions.
+Higher-level deterministic commands can reduce the amount of command construction and tool interaction required from an agent.
 
 **Status:** Preliminary support
 
-Experiment 001: 117 → 43 generated commands; 14 → 9 Bash calls.
+The effect appeared in both a Python repository and a TypeScript backend, although its size varied.
 
 ## H3 — Observation compression
 
-Commands designed to return compact, decision-relevant output reduce the amount of information that must cross the tool → model boundary.
+Commands designed to return compact, decision-relevant output can reduce the amount of information an agent has to process.
 
-**Status:** Preliminary support
+**Status:** Preliminary support, with variation
 
-Experiment 001: 30,955 → 9,419 output bytes; estimated output tokens 7,739 → 2,355.
+Experiment 001 showed a large reduction in tool output. Experiment 002 showed a smaller reduction, suggesting that the benefit depends on the workflow and repository.
 
-## H4 — Repeated-work advantage
+## H4 — Repeated work
 
-The benefit is especially pronounced when the same workflow is executed repeatedly because deterministic tooling prevents the agent from reconstructing the procedure each time.
+A reusable deterministic interface should be particularly useful when an agent performs the same procedure repeatedly.
 
-**Status:** Preliminary support
+**Status:** Plausible, not yet cleanly established
 
-Experiment 001 rounds 2–3: estimated tool-output tokens fell 90% and generated commands fell 69%.
+Experiment 001 showed a strong repeated-work effect. In Experiment 002, the baseline agent independently created and reused a `qa.sh` wrapper, making the repeat comparison confounded.
 
 ## H5 — Generalization
 
-The observed effect generalizes across repositories, technology stacks, and workflow types.
+The design pattern is useful across different repositories, stacks, and workflows.
 
-**Status:** Unknown
+**Status:** Early support
 
-Requires independent experiments.
+The approach has now been used on a Python repository and a TypeScript backend. More real-world use will be more informative than trying to establish a universal percentage improvement.
 
-## H6 — Agent performance
+## H6 — Practical usefulness
 
-Agent-native interfaces improve practical agent performance beyond token usage, including latency, reliability, retries, and task completion.
+A better agent-facing interface can make common repository workflows easier for agents to discover, execute, and reuse without hiding meaningful decisions.
 
-**Status:** Unknown
+**Status:** Preliminary support
 
-Requires controlled measurement.
-
-## H7 — Product opportunity
-
-There is sufficient recurring value in agent-native interface design to justify tooling beyond a portable Skill.
-
-**Status:** Unknown
-
-Do not optimize for a product until the underlying pattern is validated.
-
-## H8 — Agent-discovered abstractions
-
-Agents can identify repetitive deterministic workflows and create abstractions that improve the interface for both agents and developers.
-
-**Status:** Unknown
-
-Experiment 001 suggested that the resulting command surface was also useful to the developer, but this benefit has not been measured systematically.
+The experiments show reduced procedural interaction while preserving the underlying verification work. Real-world usage is the next useful test.
