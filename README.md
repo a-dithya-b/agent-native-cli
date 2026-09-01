@@ -12,6 +12,26 @@ inspect → remember commands → run several steps → parse noisy output → r
 
 > **Let the agent decide what to do. Let deterministic tooling handle how to do it.**
 
+## Install
+
+Install the Skill from this repository with the Agent Skills CLI:
+
+```bash
+npx skills add a-dithya-b/agent-native-cli --skill agent-native-cli
+```
+
+Run that from the repository where you want to use the Skill. The CLI will let you choose a supported coding agent and installs the Skill for that project.
+
+For Claude Code specifically:
+
+```bash
+npx skills add a-dithya-b/agent-native-cli --skill agent-native-cli --agent claude-code
+```
+
+To install it globally instead of per-project, add `--global`.
+
+You can also use the Skill manually by opening [`skills/agent-native-cli/SKILL.md`](skills/agent-native-cli/SKILL.md) and giving it to your coding agent.
+
 ## Why this exists
 
 A repository often already knows how to perform a task. The problem is that an agent may still have to rediscover the sequence of commands, invoke each step, and process routine output every time.
