@@ -38,6 +38,19 @@ Claude Code JSONL transcripts were captured for both sessions and analyzed indep
 
 The raw transcripts are retained outside this repository's source tree for the current experiment.
 
+## Reproducing the analysis
+
+The transcript analyzer used for this experiment is available at [`scripts/analyze_claude_transcripts.py`](../../scripts/analyze_claude_transcripts.py).
+
+```bash
+python scripts/analyze_claude_transcripts.py \
+  --baseline /path/to/baseline.jsonl \
+  --agent-native /path/to/agent-native.jsonl \
+  --output-dir /tmp/transcript-analysis
+```
+
+It writes a Markdown comparison report plus CSV and JSON details for each Bash call. Tool-output token counts are estimates based on UTF-8 byte size; the default estimator is 4 bytes per token and can be changed with `--bytes-per-token`.
+
 ## Limitations
 
 - One repository.
