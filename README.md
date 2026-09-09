@@ -22,10 +22,24 @@ npx skills add a-dithya-b/agent-native-cli --skill agent-native-cli
 
 Run that from the repository where you want to use the Skill. The CLI will let you choose a supported coding agent and installs the Skill for that project.
 
-For Claude Code specifically:
+For a specific coding agent:
+
+**Claude Code**
 
 ```bash
 npx skills add a-dithya-b/agent-native-cli --skill agent-native-cli --agent claude-code
+```
+
+**Codex**
+
+```bash
+npx skills add a-dithya-b/agent-native-cli --skill agent-native-cli --agent codex
+```
+
+**Cursor**
+
+```bash
+npx skills add a-dithya-b/agent-native-cli --skill agent-native-cli --agent cursor
 ```
 
 To install it globally instead of per-project, add `--global`.
